@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Project 1 Test</title>
-    
+
+    <!-- Compiled and minified CSS via Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
 </head>
 <body>
     <h1>Musical Search</h1>
@@ -13,23 +16,31 @@
     <input type="text" id="keyword" style="width: 250px;">
     <button id="search">Search</button>
 
-    <div id="tweets"></div>
+    <div class="row" id="tweets"></div>
 
-    <div id="youtube-thumbnails">
-      <div id="video0"></div>
-      <div id="video0-1"></div>
-      <div id="video1"></div>
-      <div id="video1-1"></div>
-      <div id="video2"></div>
-      <div id="video2-1"></div>
-      <div id="video3"></div>
-      <div id="video3-1"></div>
-      <div id="video4"></div>
-      <div id="video4-1"></div>
+    <div class="row" >
+      <div class="col s7" id="youtube-thumbnails">
+        <div id="video0"></div>
+        <div id="video0-1"></div>
+        <div id="video1"></div>
+        <div id="video1-1"></div>
+        <div id="video2"></div>
+        <div id="video2-1"></div>
+        <div id="video3"></div>
+        <div id="video3-1"></div>
+        <div id="video4"></div>
+        <div id="video4-1"></div>
+      </div>
+      <div class="col s5" id="recent-search">
+        <div id="search-history"></div>
+      </div>
     </div>
-    <div id="youtube-video"></div>
+    <!-- <div id="youtube-video"></div> -->
 
-    <div id="wiki-info"></div>
+    <div class="row" id="wiki-info"></div>
+
+    <!-- Compiled and minified JavaScript via Materialize-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>

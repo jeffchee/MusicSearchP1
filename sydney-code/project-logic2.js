@@ -62,6 +62,7 @@ $("#search").on("click", function () {
             vidIDs.push(vidId);
             var link = "https://www.youtube.com/watch?v=" + vidId;
             var imageLink = "<a href='" + link + "' target='_blank'><img src='" + thumbnail + "' ></a>";
+            var imageLinkSmall = "<a href='" + link + "' target='_blank'><img src='" + thumbnailSmall + "' ></a>";
 
             //var viewCountP = getViewCount(vidId);
             //console.log(viewCountP);
@@ -75,10 +76,25 @@ $("#search").on("click", function () {
 
             //$("#youtube-thumbnails").append(viewCountP);
 
-            recentSearchItem.top5videos.push(imageLink + titleP);
+            recentSearchItem.top5videos.push(imageLinkSmall + titleP);
             
 
         }
+
+        // Update the search history div with recent search results, prior to adding 
+        // the current results to the list of recent search results
+        $("#search-history").empty();
+        for (var i = 0; i < recentSearchList.length; i++) {
+            $("#search-history").append("<h3>" + recentSearchList[i].artist + "</h3>");
+            for (var j = 0; j < recentSearchList[i].top5videos.length; j++) {
+                $("#search-history").append(recentSearchList[i].top5videos[j]);
+            }
+        }
+
+        // If there are fewer than 5 recent search results, then add the most recent result 
+        // to the front of the list
+        // Otherwise, remove the last result in the list, and then add the most recent result
+        // to the front of the list
         if (recentSearchList.length < 5) {
             recentSearchList.unshift(recentSearchItem);
         }
@@ -94,6 +110,8 @@ $("#search").on("click", function () {
             addViewCount(vi, i);
         }
 
+        //recentSearchList = snapshot.val().recentSearchList;
+        
         database.ref().set({
             recentSearchList: recentSearchList
         });
@@ -103,6 +121,8 @@ $("#search").on("click", function () {
 
 });
 
+// Store a reference to the latest value of the recent search list
+// as retrieved from firebase
 database.ref().on("value", function(snapshot) {
     console.log(snapshot.val());
     //$("#click-value").text(snapshot.val().clickCount);
@@ -119,6 +139,9 @@ function addCommas(intNum) {
 return (intNum + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,');
 }
 
+// Function to get the view count for the video with the given id and to then 
+// add the view count to the appropriate div, given the current index i of the 
+// video in the list of videos for the current artist
 function addViewCount(id, i) {
     var apikey = "AIzaSyAwFXf47eDtC2euhvpRSvmo3ntTJlaILcA";
             var queryURL2 = "https://www.googleapis.com/youtube/v3/videos?id=" + id +

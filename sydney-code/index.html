@@ -11,27 +11,31 @@
 
 </head>
 <body>
-    <h1>Musical Search</h1>
-    <h3>Enter the name of a musician or band:</h3>
-    <input type="text" id="keyword" style="width: 250px;">
-    <button id="search">Search</button>
+    <div class="row" id="top">
+      <h1>Musical Search</h1>
+      <h3>Enter the name of a musician or band:</h3>
+      <input type="text" id="keyword" style="width: 250px;">
+      <button id="search">Search</button><button id="save-fave">Save this artist as favorite</button>
+      <p id="no-search-term"></p>
+    </div>
 
     <div class="row" id="tweets"></div>
 
     <div class="row" >
       <div class="col s7" id="youtube-thumbnails">
-        <div id="video0"></div>
-        <div id="video0-1"></div>
-        <div id="video1"></div>
-        <div id="video1-1"></div>
-        <div id="video2"></div>
-        <div id="video2-1"></div>
-        <div id="video3"></div>
-        <div id="video3-1"></div>
-        <div id="video4"></div>
-        <div id="video4-1"></div>
+        <div class="video" id="video0"></div>
+        <div class="video" id="video0-1"></div>
+        <div class="video" id="video1"></div>
+        <div class="video" id="video1-1"></div>
+        <div class="video" id="video2"></div>
+        <div class="video" id="video2-1"></div>
+        <div class="video" id="video3"></div>
+        <div class="video" id="video3-1"></div>
+        <div class="video" id="video4"></div>
+        <div class="video" id="video4-1"></div>
       </div>
       <div class="col s5" id="recent-search">
+        <div id="fav-artist"></div>
         <div id="search-history"></div>
       </div>
     </div>
@@ -45,5 +49,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
     <script src="project-logic2.js"></script>
+    <!-- <script src="project-lyrics.js"></script> -->
 </body>
 </html>

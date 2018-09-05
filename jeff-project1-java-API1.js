@@ -3,7 +3,7 @@ console.log("js is loaded")
 
 $(document).ready(function () {
 
-    $("#searching").on("click", function () {
+    $("#search").on("click", function () {
 
         var search = $("#searchTerm").val();
         console.log("click")
@@ -23,7 +23,7 @@ $(document).ready(function () {
             console.log(data.artist.bio.content);
 
             $("#outputSummary").text(data.artist.bio.content);
-            // ^gets data content, might be better with summary
+
 
             var imgURL = data.artist.image[3]["#text"];
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
 
             var artistDiv = $("<div class='ArtistImage'>");
 
-            console.log(data.artist.image[3]);
+            console.log(data.artist.image[3]["#text"]);
 
             artistDiv.append(imageU);
 
@@ -40,5 +40,5 @@ $(document).ready(function () {
 
         })
     })
+})
 
-});

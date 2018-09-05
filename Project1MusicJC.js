@@ -3,7 +3,7 @@ console.log("js is loaded")
 
 $(document).ready(function () {
 
-    $("#search").on("click", function () {
+    $("#searching").on("click", function () {
 
         var search = $("#searchTerm").val();
         console.log("click")

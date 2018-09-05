@@ -25,8 +25,10 @@ var favArtistItem = {
 }
 
 $("#search").on("click", function () {
+    console.log("here");
 
     var artist = $("#keyword").val().trim();
+    console.log(artist);
 
     $(".video").empty();
     $("#no-search-term").empty();
@@ -94,7 +96,7 @@ $("#search").on("click", function () {
                 
                 $("#video" + i).html(imageLink);
                 $("#video" + i).append(titleP);
-                //$("#video" + i).append(descriptionP);
+                $("#video" + i).append(descriptionP);
                 // $("#youtube-thumbnails").append(imageLink);
                 // $("#youtube-thumbnails").append(titleP);
                 // $("#youtube-thumbnails").append(descriptionP);

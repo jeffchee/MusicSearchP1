@@ -8,38 +8,37 @@ $(document).ready(function () {
         var search = $("#searchTerm").val();
         console.log("click")
 
-        var queryURL = "https://cors.io/?http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist="+search+"&api_key=8008974b60dc438fc58b3ca8d8e82fae&format=json";
+        var queryURL = "https://cors.io/?http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + search + "&api_key=8008974b60dc438fc58b3ca8d8e82fae&format=json";
 
 
         $.ajax({
             url: queryURL,
             method: "GET"
 
-        }).then(function(response) {
-            var results = response.artist;
-            console.log(JSON.parse(response));
-            console.log(JSON.parse(response.bio.content));
-            console.log(results);
-            for (var i = 0; i < results; i++) {
+        }).then(function (responseLast) {
 
-                var gifDiv = $("<div class='item'>");
-            
-                var personSummary = $("#search");
+            var data = JSON.parse(responseLast);
+            console.log(data);
 
-                personSummary.attr("#search", response);
+            console.log(data.artist.bio.content);
 
-                gifDiv.append(personSummary);
+            $("#outputSummary").text(data.artist.bio.content);
+            // ^gets data content, might be better with summary
 
-                $("#output").prepend(gifDiv);
-               
-            }
-        }
-        
-        )
-        
-    }
+            var imgURL = data.artist.image[3]["#text"];
 
-    )
-}
+            var imageU = $("<img>").attr("src", imgURL);
 
-)
+            var artistDiv = $("<div class='ArtistImage'>");
+
+            console.log(data.artist.image[3]);
+
+            artistDiv.append(imageU);
+
+            $("#outputImage").prepend(artistDiv);
+
+
+        })
+    })
+
+});

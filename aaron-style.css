@@ -20,6 +20,7 @@ body {
 .container {
     height: 1000px;
     /* background-color:; */
+    background-attachment: fixed;
 }
 
 #no-search-term {

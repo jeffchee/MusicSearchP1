@@ -24,6 +24,11 @@ var favArtistItem = {
     top5videos: []
 }
 
+var NUMBER_OF_VIDEOS_RETRIEVED_FROM_YOUTUBE = 6;
+var NUMBER_OF_ARTISTS_STORED_IN_FIREBASE = 5;
+var NUMBER_OF_VIDEOS_STORED_PER_ARTIST = 3;
+
+
 $("#search").on("click", function () {
     console.log("here");
 
@@ -55,7 +60,7 @@ $("#search").on("click", function () {
             "&order=viewCount" +
             "&type=video" +
             "&videoEmbeddable=true" +
-            "&maxResults=6" +
+            "&maxResults=" + NUMBER_OF_VIDEOS_RETRIEVED_FROM_YOUTUBE +
             "&q=" + artist + "&key=" + apikey;
         
         var videoList = [];
@@ -102,7 +107,7 @@ $("#search").on("click", function () {
                 // $("#youtube-thumbnails").append(descriptionP);
 
                 //$("#youtube-thumbnails").append(viewCountP);
-                if (i < 3) {
+                if (i < NUMBER_OF_VIDEOS_STORED_PER_ARTIST) {
                     recentSearchItem.top5videos.push(imageLinkSmall + titleP);
                 }
                 
@@ -128,17 +133,17 @@ $("#search").on("click", function () {
             // to the front of the list
             // Otherwise, remove the last result in the list, and then add the most recent result
             // to the front of the list
-            if (recentSearchList.length < 5) {
+            if (recentSearchList.length < NUMBER_OF_ARTISTS_STORED_IN_FIREBASE) {
                 recentSearchList.unshift(recentSearchItem);
             }
             else {
                 console.log(recentSearchList);
-                recentSearchList.splice(4, 1);
+                recentSearchList.splice(NUMBER_OF_ARTISTS_STORED_IN_FIREBASE - 1, 1);
                 console.log(recentSearchList);
                 recentSearchList.unshift(recentSearchItem);
             }
         
-            for (var i = 0; i < 6; i++) {
+            for (var i = 0; i < NUMBER_OF_VIDEOS_RETRIEVED_FROM_YOUTUBE; i++) {
                 var vi = vidIDs[i];
                 addViewCount(vi, i);
             }

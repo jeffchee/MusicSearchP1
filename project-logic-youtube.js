@@ -190,6 +190,8 @@ $("#save-fave").on("click", function () {
 
 $(document).ready(function() {
     console.log("here");
+
+    console.log(recentSearchList);
     updateSideBar();
 });
 
@@ -203,6 +205,9 @@ database.ref().on("value", function(snapshot) {
     
     recentSearchList = snapshot.val().recentSearchList;
     favArtistItem = snapshot.val().favArtist;
+
+    updateSideBar();
+    updateTopButtons();
     
   }, function(errorObject) {
     console.log("The read failed: " + errorObject.code);
@@ -255,5 +260,15 @@ function updateSideBar() {
         for (var j = 0; j < recentSearchList[i].top5videos.length; j++) {
             $("#search-history").append(recentSearchList[i].top5videos[j]);
         }
+    }
+}
+
+function updateTopButtons() {
+    var len = recentSearchList.length;
+    if (len > 4) {
+        len = 4;
+    }
+    for (var i = 0; i < len; i++) {
+        $("#btn-s" + (i + 1)).text(recentSearchList[i].artist);
     }
 }

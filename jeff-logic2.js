@@ -1,7 +1,11 @@
 console.log("js2 is loaded")
 
+var DEFAULT_ARTIST = "BTS";
 
 $(document).ready(function () {
+
+    // display default search results
+    searchForResults(DEFAULT_ARTIST);
 
     var userSearch = $("#search")
 
@@ -78,4 +82,6 @@ $(document).ready(function () {
             $("#articlesUrl").html("<a href='" + data.articles[0].url + "' target='_blank'>" + data.articles[0].url + "</a>");
         });
     }
+
+
 });

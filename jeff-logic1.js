@@ -1,7 +1,11 @@
 console.log("js is loaded");
 
+var DEFAULT_ARTIST = "BTS";
 
 $(document).ready(function () {
+
+    // display default search results
+    searchForResults(DEFAULT_ARTIST);
 
     var userSearch = $("#search");
     
@@ -47,6 +51,7 @@ $(document).ready(function () {
             });
         }
     });
+
     // Button listener for dynamic search result buttons
     $(document).on("click", ".btn-s", function() {
         console.log("HERE1");

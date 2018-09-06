@@ -105,9 +105,7 @@ $("#search").on("click", function () {
                 recentSearchList.unshift(recentSearchItem);
             }
             else {
-                console.log(recentSearchList);
                 recentSearchList.splice(NUMBER_OF_ARTISTS_STORED_IN_FIREBASE - 1, 1);
-                console.log(recentSearchList);
                 recentSearchList.unshift(recentSearchItem);
             }
         

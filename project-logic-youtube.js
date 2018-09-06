@@ -34,16 +34,19 @@ $("#search").on("click", function () {
     var artist = $("#keyword").val().trim();
     //console.log(artist);
 
-    $(".video").empty();
-    $("#no-search-term").empty();
+    
 
     // User input validation -- ensure that some form of input has been entered prior to running a search
     if (artist === "") {
         $("#no-search-term").html("<i>Please enter the name of an artist you'd like to search for.</i>");
 
-        updateSideBar();
+        //updateSideBar();
     }
     else {
+
+        $(".video").empty();
+        $("#no-search-term").empty();
+
         var apikey = "AIzaSyAwFXf47eDtC2euhvpRSvmo3ntTJlaILcA";
         var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet" +
             "&order=viewCount" +
@@ -150,14 +153,15 @@ $("#save-fave").on("click", function () {
         favArtist: favArtistItem,
         recentSearchList: recentSearchList
     });
-    $("#fav-artist").empty();
-    if (favArtistItem.artist !== "") {
-        $("#fav-artist").append("<p>Favorite Artist:");
-        $("#fav-artist").append("<h3>" + favArtistItem.artist + "</h3>");
-        for (var j = 0; j < favArtistItem.top5videos.length; j++) {
-            $("#fav-artist").append(favArtistItem.top5videos[j]);
-        }
-    }
+    // $("#fav-artist").empty();
+    // if (favArtistItem.artist !== "") {
+    //     $("#fav-artist").append("<p>Favorite Artist:");
+    //     $("#fav-artist").append("<h3>" + favArtistItem.artist + "</h3>");
+    //     for (var j = 0; j < favArtistItem.top5videos.length; j++) {
+    //         $("#fav-artist").append(favArtistItem.top5videos[j]);
+    //     }
+    // }
+    updateSideBar();
 
 });
 
@@ -214,14 +218,16 @@ function addViewCount(id, i) {
 }
 
 function updateSideBar() {
-    $("#fav-artist").empty();
-    $("#search-history").empty();
+    //$("#fav-artist").empty();
+    //$("#search-history").empty();
 
     if (favArtistItem.artist !== "") {
-        $("#fav-artist").append("<h6>Favorite Artist:</h6>");
-        $("#fav-artist").append("<h5>" + favArtistItem.artist.toUpperCase() + "</h5>");
-        for (var j = 0; j < favArtistItem.top5videos.length; j++) {
-            $("#fav-artist").append(favArtistItem.top5videos[j][0]);
+        $("#fa" + 0).html(favArtistItem.artist.toUpperCase());
+        for (var j = 0; j < favArtistItem.top5videos.length-2; j++) {
+            var image = favArtistItem.top5videos[j][0];
+            var vidname = favArtistItem.top5videos[j][1];
+            $("#fi" + 0 + "-" + j).html(image)
+            $("#ft" + 0 + "-" + j).html(vidname); 
         }
     }
 

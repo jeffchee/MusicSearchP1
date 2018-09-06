@@ -8,7 +8,7 @@ $(document).ready(function () {
     userSearch.on("click", function () {
 
         var search = $("#keyword").val();
-        console.log("click")
+        //console.log("click")
 
         var queryURL = "https://cors.io/?https://newsapi.org/v2/everything?q=" + search + "&apiKey=7673a23a71a64738bd9a8c446bd4b0b0";
 
@@ -34,7 +34,9 @@ $(document).ready(function () {
 
             $("#articlesDescription").text(data.articles[0].description);
 
-            $("#articlesUrl").text(data.articles[0].url);
+            $("#articlesUrl").html("<a href='" + data.articles[0].url + "' target='_blank'>" + data.articles[0].url + "</a>");
         })
+        $("#keyword").val("");
     });
+
 })

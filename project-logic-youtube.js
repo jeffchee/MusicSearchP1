@@ -134,7 +134,7 @@ $("#search").on("click", function () {
             });
         });
 
-        $("#keyword").val("");
+        //$("#keyword").val("");
     }
 
 });
@@ -267,6 +267,7 @@ function searchForResults(searchTerm) {
 
     $(".video").empty();
     $("#no-search-term").empty();
+    $("#favebtn").html('<a class="waves-effect blue-grey btn" id="save-fave">Save this artist as favorite</a>');
 
     // User input validation -- ensure that some form of input has been entered prior to running a search
     if (artist === "") {

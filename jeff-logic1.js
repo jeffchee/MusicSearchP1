@@ -1,14 +1,14 @@
-console.log("js is loaded")
+console.log("js is loaded");
 
 
 $(document).ready(function () {
 
-    var userSearch = $("#search")
+    var userSearch = $("#search");
 
     userSearch.on("click", function () {
 
-        var search = $("#keyword").val().trim();
-        console.log(search);
+        var search = $("#keyword").val();
+        //console.log(search);
 
         var queryURL = "https://cors.io/?http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + search + "&api_key=8008974b60dc438fc58b3ca8d8e82fae&format=json";
 
@@ -39,9 +39,6 @@ $(document).ready(function () {
             artistDiv.append(imageU);
 
             $("#outputImage").html(artistDiv);
-
-
-// maxstring cut down to size
 
         })
 

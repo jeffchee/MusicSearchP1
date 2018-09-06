@@ -1,23 +1,34 @@
 #titleNoise {
 height: 40px;
 padding-bottom: 20px;
+color: #586D57 !important;
 }
 
-#recentSearch {
-    
+#recentBtn {
+    background-color: #FED6A0;
 }
 
-#searchBar {
+#submitBtn {
+    align-self: auto;
+    height: 65px;
+}
 
+.rightColumn {
+    background-color: #679CB2;
 }
 
 body {
-    background-image:  url('https://2sczrg31729t1djmg132q5a7-wpengine.netdna-ssl.com/wp-content/uploads/2016/06/edm-massive-festival.png');
+    /* background-image:  url('https://www.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-11-full.jpg'); */
     background-size: cover;
+    background-color: #E8EDDF;
 
 }
 
 .container {
     height: 1000px;
     background-color:;
+}
+
+.leftColumn {
+    background-color: #93B7BE;
 }

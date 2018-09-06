@@ -55,7 +55,7 @@ $("#search").on("click", function () {
             "&order=viewCount" +
             "&type=video" +
             "&videoEmbeddable=true" +
-            "&maxResults=5" +
+            "&maxResults=6" +
             "&q=" + artist + "&key=" + apikey;
         
         var videoList = [];
@@ -96,14 +96,16 @@ $("#search").on("click", function () {
                 
                 $("#video" + i).html(imageLink);
                 $("#video" + i).append(titleP);
-                $("#video" + i).append(descriptionP);
+                // $("#video" + i).append(descriptionP);
                 // $("#youtube-thumbnails").append(imageLink);
                 // $("#youtube-thumbnails").append(titleP);
                 // $("#youtube-thumbnails").append(descriptionP);
 
                 //$("#youtube-thumbnails").append(viewCountP);
-
-                recentSearchItem.top5videos.push(imageLinkSmall + titleP);
+                if (i < 3) {
+                    recentSearchItem.top5videos.push(imageLinkSmall + titleP);
+                }
+                
                 
 
             }
@@ -136,7 +138,7 @@ $("#search").on("click", function () {
                 recentSearchList.unshift(recentSearchItem);
             }
         
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < 6; i++) {
                 var vi = vidIDs[i];
                 addViewCount(vi, i);
             }
@@ -179,6 +181,11 @@ $("#save-fave").on("click", function () {
         }
     }
 
+});
+
+$(document).ready(function() {
+    console.log("here");
+    updateSideBar();
 });
 
 

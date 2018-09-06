@@ -1,5 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project 1 Test</title>
+
+    <!-- Compiled and minified CSS via Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+</head>
+<body>
+    <div class="row" id="top">
+      <h1>Musical Search</h1>
+      <h3>Enter the name of a musician or band:</h3>
+      <input type="text" id="keyword" style="width: 250px;">
+      <button id="search">Search</button><button id="save-fave">Save this artist as favorite</button>
+      <p id="no-search-term"></p>
+    </div>
+
+    <div class="row" id="tweets"></div>
+
+    <div class="row" >
+      <div class="col s7" id="youtube-thumbnails">
+        <div class="video" id="video0"></div>
+        <div class="video" id="video0-1"></div>
+        <div class="video" id="video1"></div>
+        <div class="video" id="video1-1"></div>
+        <div class="video" id="video2"></div>
+        <div class="video" id="video2-1"></div>
+        <div class="video" id="video3"></div>
+        <div class="video" id="video3-1"></div>
+        <div class="video" id="video4"></div>
+        <div class="video" id="video4-1"></div>
+      </div>
+      <div class="col s5" id="recent-search">
+        <div id="fav-artist"></div>
+        <div id="search-history"></div>
+      </div>
+    </div>
+    <!-- <div id="youtube-video"></div> -->
+
+    <div class="row" id="wiki-info"></div>
+
+    <!-- Compiled and minified JavaScript via Materialize-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+    <script src="project-logic2.js"></script>
+    <!-- <script src="project-lyrics.js"></script> -->
+</body>
+</html>
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -9,14 +70,17 @@
 </head>
 
 <body>
+
     <div class="container">
 
         <input class="from-control" id="searchTerm">
 
-        <button id="search" type="button" class="btn btn-primary">Submit</button>
+        <button id="search" type="button" class="btnbtn-primary">Submit</button>
         <br>
         <div id="outputSummary"></div>
         <div id="outputImage"></div>
+        <div id="outputName"></div>
+
 
 
         <div id="articlesTitle"> </div>
@@ -33,9 +97,9 @@
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="Project1MusicJC.js"></script>
-    <script src="Project1MusicJC2.js"></script>
+    <script src="jeff-project1-java-API1.js"></script>
+    <script src="jeff-project1-java-API2.js"></script>
 
 </body>
 
-</html>
+</html> -->

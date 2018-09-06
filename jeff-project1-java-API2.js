@@ -1,11 +1,11 @@
-
-
 console.log("js2 is loaded")
 
 
 $(document).ready(function () {
 
-    $("#search").on("click", function () {
+    var userSearch = $("#search")
+
+    userSearch.on("click", function () {
 
         var search = $("#searchTerm").val();
         console.log("click")
@@ -39,4 +39,4 @@ $(document).ready(function () {
 
 
     });
-});
+})

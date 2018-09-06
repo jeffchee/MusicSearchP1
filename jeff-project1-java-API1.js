@@ -3,7 +3,9 @@ console.log("js is loaded")
 
 $(document).ready(function () {
 
-    $("#search").on("click", function () {
+    var userSearch = $("#search")
+
+    userSearch.on("click", function () {
 
         var search = $("#searchTerm").val();
         console.log("click")
@@ -21,9 +23,10 @@ $(document).ready(function () {
             console.log(data);
 
             console.log(data.artist.bio.content);
+            console.log(data.artist.name);
 
             $("#outputSummary").text(data.artist.bio.content);
-
+            $("#outputName").append(data.artist.name);
 
             var imgURL = data.artist.image[3]["#text"];
 
@@ -35,10 +38,14 @@ $(document).ready(function () {
 
             artistDiv.append(imageU);
 
-            $("#outputImage").prepend(artistDiv);
+            $("#outputImage").html(artistDiv);
 
+
+// maxstring cut down to size
 
         })
+
+         
     })
 })
 

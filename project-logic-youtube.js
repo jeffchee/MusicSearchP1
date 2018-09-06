@@ -42,16 +42,6 @@ $("#search").on("click", function () {
     if (artist === "") {
         $("#no-search-term").html("<i>Please enter the name of an artist you'd like to search for.</i>");
 
-        // $("#search-history").empty();
-        // if (recentSearchList.length > 0) {
-        //     $("#search-history").append("<p>5 Most Recent Searches:");
-        // }
-        // for (var i = 0; i < recentSearchList.length; i++) {
-        //     $("#search-history").append("<h3>" + recentSearchList[i].artist + "</h3>");
-        //     for (var j = 0; j < recentSearchList[i].top5videos.length; j++) {
-        //         $("#search-history").append(recentSearchList[i].top5videos[j]);
-        //     }
-        // }
         updateSideBar();
     }
     else {
@@ -95,38 +85,26 @@ $("#search").on("click", function () {
                 var link = "https://www.youtube.com/watch?v=" + vidId;
                 var imageLink = "<a href='" + link + "' target='_blank'><img src='" + thumbnail + "' ></a>";
                 var imageLinkSmall = "<a href='" + link + "' target='_blank'><img src='" + thumbnailSmall + "' ></a>";
+                var imageSmall = "<img src='" + thumbnailSmall + "'>";
+                var titleLink = "<a href='" + link + "' target='_blank'>" + title + "</a>";
 
                 //var viewCountP = getViewCount(vidId);
                 //console.log(viewCountP);
                 
                 $("#video" + i).html(imageLink);
-                $("#video" + i).append(titleP);
-                // $("#video" + i).append(descriptionP);
+                $("#video" + i).append(titleP + '<br>');
+                $("#video" + i).append(descriptionP + '<br>');
                 // $("#youtube-thumbnails").append(imageLink);
                 // $("#youtube-thumbnails").append(titleP);
                 // $("#youtube-thumbnails").append(descriptionP);
 
                 //$("#youtube-thumbnails").append(viewCountP);
                 if (i < NUMBER_OF_VIDEOS_STORED_PER_ARTIST) {
-                    recentSearchItem.top5videos.push(imageLinkSmall + titleP);
+                    recentSearchItem.top5videos.push([imageLinkSmall, title]);
                 }
-                
-                
 
             }
 
-            // Update the search history div with recent search results, prior to adding 
-            // the current results to the list of recent search results
-            // $("#search-history").empty();
-            // if (recentSearchList.length > 0) {
-            //     $("#search-history").append("<p>5 Most Recent Searches:");
-            // }
-            // for (var i = 0; i < recentSearchList.length; i++) {
-            //     $("#search-history").append("<h3>" + recentSearchList[i].artist + "</h3>");
-            //     for (var j = 0; j < recentSearchList[i].top5videos.length; j++) {
-            //         $("#search-history").append(recentSearchList[i].top5videos[j]);
-            //     }
-            // }
             updateSideBar();
 
             // If there are fewer than 5 recent search results, then add the most recent result 
@@ -147,8 +125,6 @@ $("#search").on("click", function () {
                 var vi = vidIDs[i];
                 addViewCount(vi, i);
             }
-
-            //recentSearchList = snapshot.val().recentSearchList;
             
             database.ref().set({
                 favArtist: favArtistItem,
@@ -157,10 +133,8 @@ $("#search").on("click", function () {
         });
 
         $("#keyword").val("");
-
     }
 
-    
 });
 
 
@@ -188,11 +162,8 @@ $("#save-fave").on("click", function () {
 
 });
 
-$(document).ready(function() {
-    console.log("here");
-
-    console.log(recentSearchList);
-    updateSideBar();
+$(document).on("click", ".btn-s", function() {
+    console.log("HERE");
 });
 
 
@@ -245,20 +216,29 @@ function updateSideBar() {
     $("#search-history").empty();
 
     if (favArtistItem.artist !== "") {
-        $("#fav-artist").append("<p>Favorite Artist:");
-        $("#fav-artist").append("<h3>" + favArtistItem.artist + "</h3>");
+        $("#fav-artist").append("<h6>Favorite Artist:</h6>");
+        $("#fav-artist").append("<h5>" + favArtistItem.artist.toUpperCase() + "</h5>");
         for (var j = 0; j < favArtistItem.top5videos.length; j++) {
-            $("#fav-artist").append(favArtistItem.top5videos[j]);
+            $("#fav-artist").append(favArtistItem.top5videos[j][0]);
         }
     }
 
     if (recentSearchList.length > 0) {
-        $("#search-history").append("<p>5 Most Recent Searches:");
+        // $("#search-history").append("<p>5 Most Recent Searches:");
+        // $("#search-history-1").append('<div class="card blue-grey darken-1">' +
+        //     '<div class="card-content white-text">'+
+        //     '<p>Most Recent Searches</p></div></div>');
+       
     }
     for (var i = 0; i < recentSearchList.length; i++) {
-        $("#search-history").append("<h3>" + recentSearchList[i].artist + "</h3>");
+
+       $("#a" + i).html(recentSearchList[i].artist.toUpperCase());
+
         for (var j = 0; j < recentSearchList[i].top5videos.length; j++) {
-            $("#search-history").append(recentSearchList[i].top5videos[j]);
+            var image = recentSearchList[i].top5videos[j][0];
+            var vidname = recentSearchList[i].top5videos[j][1];
+            $("#i" + i + "-" + j).html(image)
+            $("#t" + i + "-" + j).html(vidname); 
         }
     }
 }
@@ -269,6 +249,6 @@ function updateTopButtons() {
         len = 4;
     }
     for (var i = 0; i < len; i++) {
-        $("#btn-s" + (i + 1)).text(recentSearchList[i].artist);
+        $("#btn-s" + (i + 1)).text(recentSearchList[i].artist.toUpperCase());
     }
 }

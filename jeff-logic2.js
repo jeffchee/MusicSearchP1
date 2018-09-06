@@ -1,4 +1,4 @@
-console.log("js2 is loaded")
+//console.log("js2 is loaded")
 
 var DEFAULT_ARTIST = "BTS";
 
@@ -27,12 +27,12 @@ $(document).ready(function () {
             }).then(function (responseLast) {
     
                 var data = JSON.parse(responseLast);
-                console.log(data);
+                // console.log(data);
     
-                console.log(data.articles[0].title);
-                console.log(data.articles[0].author);
-                console.log(data.articles[0].description);
-                console.log(data.articles[0].url);
+                // console.log(data.articles[0].title);
+                // console.log(data.articles[0].author);
+                // console.log(data.articles[0].description);
+                // console.log(data.articles[0].url);
     
                 $("#articlesTitle").text(data.articles[0].title);
     
@@ -44,16 +44,15 @@ $(document).ready(function () {
             });
         }
 
+        // Empty out the search input field after the term has been searched for
         $("#keyword").val("");
     });
+
     // Button listener for dynamic search result buttons
     $(document).on("click", ".btn-s", function() {
-        console.log("HERE2");
         var prevSearch = $(this).text();
-        console.log(prevSearch);
         searchForResults(prevSearch);
     });
-
 
     function searchForResults(searchTerm) {
         var search = searchTerm;
@@ -66,12 +65,12 @@ $(document).ready(function () {
         }).then(function (responseLast) {
 
             var data = JSON.parse(responseLast);
-            console.log(data);
+            // console.log(data);
 
-            console.log(data.articles[0].title);
-            console.log(data.articles[0].author);
-            console.log(data.articles[0].description);
-            console.log(data.articles[0].url);
+            // console.log(data.articles[0].title);
+            // console.log(data.articles[0].author);
+            // console.log(data.articles[0].description);
+            // console.log(data.articles[0].url);
 
             $("#articlesTitle").text(data.articles[0].title);
 
@@ -82,6 +81,4 @@ $(document).ready(function () {
             $("#articlesUrl").html("<a href='" + data.articles[0].url + "' target='_blank'>" + data.articles[0].url + "</a>");
         });
     }
-
-
 });

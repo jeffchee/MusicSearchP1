@@ -30,10 +30,9 @@ var NUMBER_OF_VIDEOS_STORED_PER_ARTIST = 3;
 
 
 $("#search").on("click", function () {
-    console.log("here");
 
     var artist = $("#keyword").val().trim();
-    console.log(artist);
+    //console.log(artist);
 
     $(".video").empty();
     $("#no-search-term").empty();
@@ -162,8 +161,11 @@ $("#save-fave").on("click", function () {
 
 });
 
+// Button listener for dynamic search result buttons
 $(document).on("click", ".btn-s", function() {
     console.log("HERE");
+    var prevSearch = $(this).text();
+    searchForResults(prevSearch);
 });
 
 
@@ -250,5 +252,98 @@ function updateTopButtons() {
     }
     for (var i = 0; i < len; i++) {
         $("#btn-s" + (i + 1)).text(recentSearchList[i].artist.toUpperCase());
+    }
+}
+
+function searchForResults(searchTerm) {
+    var artist = searchTerm;
+    //console.log(artist);
+
+    $(".video").empty();
+    $("#no-search-term").empty();
+
+    // User input validation -- ensure that some form of input has been entered prior to running a search
+    if (artist === "") {
+        $("#no-search-term").html("<i>Please enter the name of an artist you'd like to search for.</i>");
+
+        updateSideBar();
+    }
+    else {
+        var apikey = "AIzaSyAwFXf47eDtC2euhvpRSvmo3ntTJlaILcA";
+        var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet" +
+            "&order=viewCount" +
+            "&type=video" +
+            "&videoEmbeddable=true" +
+            "&maxResults=" + NUMBER_OF_VIDEOS_RETRIEVED_FROM_YOUTUBE +
+            "&q=" + artist + "&key=" + apikey;
+        
+        var videoList = [];
+        var vidIDs = [];
+       
+        //perform an AJAX GET request to access data from the specified URL
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        .then(function (response) {
+            //console.log(JSON.stringify(response));
+            // console.log(response.items[0].snippet.title);
+            recentSearchItem.artist = artist;
+            recentSearchItem.top5videos = [];
+
+            for (var i = 0; i < response.items.length; i++) {
+
+                var title = response.items[i].snippet.title;
+                var titleP = "<p>" + title + "</p>";
+                var description = response.items[i].snippet.description;
+                var descriptionP = "<p>" + description + "</p>";
+                var thumbnail = response.items[i].snippet.thumbnails.medium.url;
+                var thumbnailSmall = response.items[i].snippet.thumbnails.default.url;
+                var vidId = response.items[i].id.videoId;
+                vidIDs.push(vidId);
+                var link = "https://www.youtube.com/watch?v=" + vidId;
+                var imageLink = "<a href='" + link + "' target='_blank'><img src='" + thumbnail + "' ></a>";
+                var imageLinkSmall = "<a href='" + link + "' target='_blank'><img src='" + thumbnailSmall + "' ></a>";
+                var imageSmall = "<img src='" + thumbnailSmall + "'>";
+                var titleLink = "<a href='" + link + "' target='_blank'>" + title + "</a>";
+                
+                $("#video" + i).html(imageLink);
+                $("#video" + i).append(titleP + '<br>');
+                $("#video" + i).append(descriptionP + '<br>');
+     
+                if (i < NUMBER_OF_VIDEOS_STORED_PER_ARTIST) {
+                    recentSearchItem.top5videos.push([imageLinkSmall, title]);
+                }
+
+            }
+
+            updateSideBar();
+
+            // If there are fewer than 5 recent search results, then add the most recent result 
+            // to the front of the list
+            // Otherwise, remove the last result in the list, and then add the most recent result
+            // to the front of the list
+            if (recentSearchList.length < NUMBER_OF_ARTISTS_STORED_IN_FIREBASE) {
+                recentSearchList.unshift(recentSearchItem);
+            }
+            else {
+                console.log(recentSearchList);
+                recentSearchList.splice(NUMBER_OF_ARTISTS_STORED_IN_FIREBASE - 1, 1);
+                console.log(recentSearchList);
+                recentSearchList.unshift(recentSearchItem);
+            }
+        
+            for (var i = 0; i < NUMBER_OF_VIDEOS_RETRIEVED_FROM_YOUTUBE; i++) {
+                var vi = vidIDs[i];
+                addViewCount(vi, i);
+            }
+            
+            database.ref().set({
+                favArtist: favArtistItem,
+                recentSearchList: recentSearchList
+            });
+        });
+
+        $("#keyword").val("");
     }
 }

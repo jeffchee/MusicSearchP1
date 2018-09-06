@@ -39,7 +39,8 @@ $("#search").on("click", function () {
 
     // User input validation -- ensure that some form of input has been entered prior to running a search
     if (artist === "") {
-        $("#no-search-term").html("<i>Please enter the name of an artist you'd like to search for.</i>");
+        $("#no-search-term").html("<i>Please enter the name of an artist you'd like to search for " +
+            "(or select a recent search).</i>");
     }
     else {
 

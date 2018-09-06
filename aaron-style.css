@@ -11,6 +11,7 @@ body {
 
 .container {
     height: 1000px;
+    background-color: black;
     background-attachment: fixed;
 }
 

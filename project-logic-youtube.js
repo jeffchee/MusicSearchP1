@@ -148,7 +148,6 @@ $("#save-fave").on("click", function () {
 
 // Button listener for dynamic search result buttons
 $(document).on("click", ".btn-s", function() {
-    console.log("HERE");
     var prevSearch = $(this).text();
     searchForResults(prevSearch);
 });
@@ -313,9 +312,7 @@ function searchForResults(searchTerm) {
                 recentSearchList.unshift(recentSearchItem);
             }
             else {
-                console.log(recentSearchList);
                 recentSearchList.splice(NUMBER_OF_ARTISTS_STORED_IN_FIREBASE - 1, 1);
-                console.log(recentSearchList);
                 recentSearchList.unshift(recentSearchItem);
             }
         

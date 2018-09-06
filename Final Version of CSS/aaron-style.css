@@ -1,0 +1,39 @@
+#titleNoise {
+height: 40px;
+padding-bottom: 20px;
+}
+
+/* #recentSearch {
+    
+}
+
+#searchBar {
+
+} */
+
+body {
+    /* background-image:  url('https://2sczrg31729t1djmg132q5a7-wpengine.netdna-ssl.com/wp-content/uploads/2016/06/edm-massive-festival.png'); */
+    background-color: darkslategrey;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container {
+    height: 1000px;
+    /* background-color:; */
+}
+
+#no-search-term {
+    color: white;
+    font-size: 24px;
+}
+
+/* #card1 {
+    text-align: center;
+    color: white;
+    padding: 10px;
+} */
+
+#outputName {
+    font-size: 48px;
+}

@@ -13,10 +13,6 @@ body {
     line-height: 1;
 }
 
-a {
-    color: black;
-}
-
 .container {
     height: 1000px;
     /* background-color: black; */
@@ -31,4 +27,20 @@ a {
 
 #outputName {
     font-size: 48px;
+}
+
+#outputSummary {
+    line-height: 1.25;
+}
+
+#newsInfo {
+    line-height: 1.5;
+}
+
+#articlesTitle {
+    font-size: 20px;
+}
+
+#articlesURL {
+    font-size: 20px;
 }

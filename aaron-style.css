@@ -1,0 +1,46 @@
+#titleNoise {
+height: 40px;
+padding-bottom: 20px;
+}
+
+body {
+    background-image:  url('https://2sczrg31729t1djmg132q5a7-wpengine.netdna-ssl.com/wp-content/uploads/2016/06/edm-massive-festival.png');
+    background-size: cover; 
+    background-attachment: fixed;
+
+    /* background-color: darkslategrey; */
+    background-color: #37474f; /* blue-grey dark-3 from materialize */
+    line-height: 1;
+}
+
+.container {
+    height: 1000px;
+    /* background-color: black; */
+    background-attachment: fixed;
+}
+
+#no-search-term {
+    color: white;
+    font-size: 24px;
+    background-color: black;
+}
+
+#outputName {
+    font-size: 48px;
+}
+
+#outputSummary {
+    line-height: 1.25;
+}
+
+#newsInfo {
+    line-height: 1.5;
+}
+
+#articlesTitle {
+    font-size: 20px;
+}
+
+#articlesURL {
+    font-size: 20px;
+}

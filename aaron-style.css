@@ -5,19 +5,28 @@ padding-bottom: 20px;
 
 body {
     background-image:  url('https://2sczrg31729t1djmg132q5a7-wpengine.netdna-ssl.com/wp-content/uploads/2016/06/edm-massive-festival.png');
-    background-size: cover;
+    background-size: cover; 
+    background-attachment: fixed;
+
+    /* background-color: darkslategrey; */
+    background-color: #37474f; /* blue-grey dark-3 from materialize */
     line-height: 1;
+}
+
+a {
+    color: black;
 }
 
 .container {
     height: 1000px;
-    background-color: black;
+    /* background-color: black; */
     background-attachment: fixed;
 }
 
 #no-search-term {
     color: white;
     font-size: 24px;
+    background-color: black;
 }
 
 #outputName {

@@ -31,9 +31,6 @@ var DEFAULT_ARTIST = "BTS";
 
 $("#search").on("click", function () {
 
-    $("#recent").html("Most Recent Search Result:");
-    $("#save-fave").show();
-
     var artist = $("#keyword").val().trim();
     //console.log(artist);
 
@@ -43,6 +40,8 @@ $("#search").on("click", function () {
             "(or select a recent search).</i>");
     }
     else {
+        $("#recent").html("Most Recent Search Result:");
+        $("#save-fave").show();
 
         $(".video").empty();
         $("#no-search-term").empty();
@@ -96,7 +95,7 @@ $("#search").on("click", function () {
                 }
             }
 
-            updateSideBar();
+            //updateSideBar();
 
             // If there are fewer than 5 recent search results, then add the most recent result 
             // to the front of the list
@@ -142,7 +141,7 @@ $("#save-fave").on("click", function () {
         favArtist: favArtistItem,
         recentSearchList: recentSearchList
     });
-    updateSideBar();
+    //updateSideBar();
 });
 
 // Button listener for dynamic search result buttons
@@ -301,7 +300,7 @@ function searchForResults(searchTerm) {
                     recentSearchItem.top5videos.push([imageLinkSmall, title]);
                 }
             }
-            updateSideBar();
+            //updateSideBar();
 
             // If there are fewer than 5 recent search results, then add the most recent result 
             // to the front of the list
@@ -376,7 +375,7 @@ function searchDefault() {
             }
         }
 
-        updateSideBar();
+        //updateSideBar();
 
         // If there are fewer than 5 recent search results, then add the most recent result 
         // to the front of the list
@@ -396,11 +395,25 @@ function searchDefault() {
             var vi = vidIDs[i];
             addViewCount(vi, i);
         }
-        
+
         // We're not storing the search results for the "default artist" in firebase
         // database.ref().set({
         //     favArtist: favArtistItem,
         //     recentSearchList: recentSearchList
         // });
     });
+
+    // Re-initialize these global variables since we don't want to store default artist
+    // in our recent search list every time we refresh the page
+    recentSearchItem = {
+        artist: "",
+        top5videos: []
+    }
+    
+    favArtistItem = {
+        artist: "",
+        top5videos: []
+    }
+
+    var recentSearchList = [];
 }

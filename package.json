@@ -1,0 +1,24 @@
+{
+  "name": "Noise.app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffchee/MusicSearchP1.git"
+  },
+  "engines": {
+    "node": "10.8.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffchee/MusicSearchP1/issues"
+  },
+  "homepage": "https://github.com/jeffchee/MusicSearchP1#readme"
+}

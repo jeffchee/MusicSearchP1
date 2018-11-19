@@ -27,7 +27,7 @@ var favArtistItem = {
 var NUMBER_OF_VIDEOS_RETRIEVED_FROM_YOUTUBE = 6;
 var NUMBER_OF_ARTISTS_STORED_IN_FIREBASE = 5;
 var NUMBER_OF_VIDEOS_STORED_PER_ARTIST = 3;
-var DEFAULT_ARTIST = "BTS";
+var DEFAULT_ARTIST = "marshmello";
 
 $("#search").on("click", function () {
 
